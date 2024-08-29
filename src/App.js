@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
 import './App.css';
+import axios from 'axios'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Layout } from './NAVBAR/Nav';
+import { Home } from './PAGES/Home';
+import { About } from './PAGES/About';
 
-function App() {
+// export const App = () =>{
+// useEffect(() => {
+// console.log(`${process.env.REACT_APP_SERVER}/api/method`);
+
+// axios.get(`${process.env.REACT_APP_SERVER}/api/method`)
+// .then((res) => {
+// console.log(res.data);
+// if (res.data.code === 200) {
+//   alert(res.data.db)
+// } else if (res.data.code === 400) {
+//   alert(res.data.msg)
+// }
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       })
+//   }, [])
+//   return (
+//     <>
+//     </>
+//   );
+// }
+export const App = () => {
+  const router = createBrowserRouter([{
+    path: "/",
+    element: <Layout />,
+    children: [{
+      path: "/Home",
+      element: <Home />,
+    },
+    {
+      path:"/About",
+      element:<About/>
+    }
+    ]
+
+  }])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+  <RouterProvider router={router}/>
+    </>
+  )
 }
-
-export default App;
