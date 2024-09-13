@@ -1,10 +1,14 @@
-import { useEffect } from 'react';
+import { useContext} from 'react';
 import './App.css';
-import axios from 'axios'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './NAVBAR/Nav';
 import { Home } from './PAGES/Home';
 import { About } from './PAGES/About';
+import { Register } from './PAGES/Register';
+import { Login } from './PAGES/Login';
+import { Profile } from './PAGES/Profile';
+import { AuthContext } from './USECONTEXT/AuthContext';
+import { LineChart } from './CHARTS/Linechart';
 
 // export const App = () =>{
 // useEffect(() => {
@@ -29,6 +33,7 @@ import { About } from './PAGES/About';
 //   );
 // }
 export const App = () => {
+  const {user} = useContext(AuthContext)
   const router = createBrowserRouter([{
     path: "/",
     element: <Layout />,
@@ -39,6 +44,18 @@ export const App = () => {
     {
       path:"/About",
       element:<About/>
+    },
+    {
+      path:"/register",
+      element:<Register/>
+    },
+    {
+      path:"/login",
+      element:<Login/>
+    },
+    {
+      path:"/profile",
+      element:<Profile/>
     }
     ]
 

@@ -1,4 +1,6 @@
+import './Page.css'
 import axios from "axios"
+import {ToastContainer,toast} from 'react-toastify'
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -6,48 +8,41 @@ export const Register = () => {
     const navigate = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const handleRegister = () => {
-        // console.log(username + " " + password)
-        axios.post("http://localhost:5001/signup",{
-            username : username, password:password
+
+    // const notify =()=>{
+    //     toast("Datas saved...")
+    // }
+    const handleRegister = (e) => {
+        e.preventDefault();
+
+        console.log(username + " " + password)
+        axios.post("http://localhost:5001/signup", {
+            username, password
         })
-        .then(res => {
-            alert(res.data);
-            navigate("/login")
-            
-        })
+            .then(res => {
+                alert(res.data);
+                navigate("/login")
+            })
+            .catch(err => err.console.error("Error", err))
+
         setUsername("");
         setPassword("");
 
     }
     return (
+        <div className='reg'>
+            <form onSubmit={handleRegister}>
 
-        <div>
-
-            <div>
-
-                <label>Username </label>
-
-                <input type="text" placeholder="Username" value={(username)} onChange={(e) => setUsername(e.target.value)} />
-
-            </div>
-
-            <div>
-
-                <label className='mr-10' >Password </label>
-
-                <input type="password" placeholder="Password" value={(password)} onChange={(e) => setPassword(e.target.value)} />
-
-            </div>
-
-            <div>
-
-                <button onclick={(handleRegister)}>Sign Up </button>
-
-            </div>
-
-
-
-        </div >
+                <label className='username'>Username :
+                    <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                </label>
+                <br />
+                <label className='password'>Password :
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </label>
+                <br />
+                <div className='submit'><input type="submit" value="Register" /></div>
+            </form>
+        </div>
     )
 }

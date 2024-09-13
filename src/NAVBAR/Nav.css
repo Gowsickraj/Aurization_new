@@ -1,25 +1,25 @@
     * {
-        /* margin: 0; */
+        margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
     nav ul {
         display: flex;
+        justify-content: flex-end;
         list-style-type: none;
+        padding: 15px;
         gap: 50px;
+        background-color: #759e75;
     }
 
     a {
-        /* border: 2px solid olivedrab; */
         border-radius: 10px;
         text-decoration: none;
-        font-size: larger;
-        color: black;
+        font-size: 25px;
+        color: #ffffff;
     }
 
     a:hover {
-        background-color: #b8a0a0;
         color: #ffffff;
-
     }

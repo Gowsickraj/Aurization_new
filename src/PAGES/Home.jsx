@@ -1,12 +1,14 @@
-import { FormComponent } from "../API_DATAS/Formcontent"
-import { Sendingdatas } from "../API_DATAS/Sendingdatas"
+// import { FormComponent } from "../API_DATAS/Formcontent"
 
+import Notification from "../CARDTrainning/Tostify"
+import { LineChart } from "../CHARTS/Linechart"
 export const Home =()=>{
 
   return(
     <>
-    {/* <Sendingdatas/> */}
-    <FormComponent/>
+    {/* <FormComponent/> */}
+    <LineChart/>
+    <Notification/>
     </>
   )
 }
